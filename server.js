@@ -10,6 +10,11 @@ var uuid = require('uuid-v4');
 
 var astronauts = [];
 
+//FUNZIONE DI BASE PER "HOMEPAGE"
+app.get('/', (req,res) => {
+	res.json("Welcome to SpaceStation API!");
+})
+
 // FUNZIONE PER AGGIUNGERE UTENTI. IL BODY E' PENSATO PRINCIPALMENTE IN FORMATO URL-ENCODED, VISTO CHE VIENE FACILE DA TESTARE SU POSTMAN
 app.post('/api/astronauts', (req,res) => {
 	var id=uuid();
