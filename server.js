@@ -33,3 +33,17 @@ app.get('/api/astronauts/:id', (req,res) => {
 		res.sendStatus(404);
 	}
 });
+
+// FUNZIONE PER MODIFICARE DATI DI UN ASTRONAUTA (ESCLUSO IL SUO ID UNIVOCO)
+app.put('/api/astronauts/:id', (req,res) => {
+	var id=req.params.id;
+	var index = astronauts.findIndex(item => {return item.id == id});
+	if(index != -1){
+		var param = astronauts[index].id;
+		astronauts[index] = {id: param, firstName: req.body.firstName, lastName: req.body.lastName, isInSpace: req.body.isInSpace };
+		res.json(astronauts[index]);
+	}
+	else{
+		res.sendStatus(404);
+	}
+});
