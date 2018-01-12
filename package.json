@@ -1,0 +1,20 @@
+{
+  "name": "esame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "jest": "^22.0.6",
+    "mongoose": "^4.13.9",
+    "node-fetch": "^1.7.3",
+    "uuid-v4": "^0.1.0"
+  }
+}
