@@ -17,9 +17,19 @@ app.post('/api/astronauts', (req,res) => {
 	res.json({"id":id, firstName: req.body.firstName, lastName: req.body.lastName, isInSpace: req.body.isInSpace });
 });
 
-// FUNZIONE PER MOSTRARE TUTTI GLI UTENTI (SIMPLE GET)
+// FUNZIONE PER MOSTRARE TUTTI GLI UTENTI (SIMPLE GET). SE TROVO IL FILTRO ALLORA FACCIO UNA RICERCA PER COGNOME (GETWITHSEARCH)
 app.get('/api/astronauts', (req,res) => {
-	res.json(astronauts);
+	if(req.query.lastName == null)
+		res.json(astronauts);
+	else{
+		var result=[]
+		for(i=0;i<astronauts.length;i++){
+			if(astronauts[i].lastName == req.query.lastName){
+				result.push(astronauts[i]);
+			}
+		}
+		res.json(result);
+	}
 });
 
 // FUNZIONE PER MOSTRARE UTENTE TRAMITE ID (GETBYID)
@@ -47,3 +57,6 @@ app.put('/api/astronauts/:id', (req,res) => {
 		res.sendStatus(404);
 	}
 });
+
+app.listen(port);
+console.log("Listening to port "+port);
