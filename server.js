@@ -21,3 +21,15 @@ app.post('/api/astronauts', (req,res) => {
 app.get('/api/astronauts', (req,res) => {
 	res.json(astronauts);
 });
+
+// FUNZIONE PER MOSTRARE UTENTE TRAMITE ID (GETBYID)
+app.get('/api/astronauts/:id', (req,res) => {
+	var id=req.params.id;
+	var index = astronauts.findIndex(item => {return item.id == id});
+	if(index != -1){
+		res.json(astronauts[index]);
+	}
+	else{
+		res.sendStatus(404);
+	}
+});
